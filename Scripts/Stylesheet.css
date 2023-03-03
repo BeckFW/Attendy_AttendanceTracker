@@ -8,14 +8,14 @@
     --LightGrey: hsl(0, 0%, 35%);
     --White: #FFFFFF;
     --OffWhite: hsl(0, 0%, 75%);
-    --DarkBlue: hsl(212, 100%, 25%);
+    --DarkBlue: #4098FF;
     --LightBlue: hsl(212, 100%, 50%); 
 }
 
 *
 {
     /* Font */
-    font-family: 'Lato', sans-serif;
+    font-family: system-ui,'Lato', sans-serif;
 }
 
 a, a:visited, a:focus
@@ -23,18 +23,23 @@ a, a:visited, a:focus
     text-decoration: none;
 }
 
+h2
+{
+    font-weight: 400;
+}
+
 html
 {
     background-color: var(--DarkGrey);
+    height: 100%;
+    overflow-x: hidden;
 }
 
 body
 {
     margin: 0em auto;
-    overflow-x: hidden;
-    overflow-y: hidden;
     width: var(--maxWidth);
-    height: var(--maxHeight);
+    height: 100%;
 }
 
 canvas
@@ -46,9 +51,14 @@ canvas
 
 .CheckInContainer, .HomeContainer
 {
-    width: var(--maxWidth);
-    height: var(--maxHeight); 
-    background-image: url(/Images/Backgrounds/Darken/Background_01.png);
+    background-image: url(/Images/Backgrounds/Background_04.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    box-shadow: inset 30em 30em rgba(0,0,0,0.5);
+    height: 100%;
+    overflow: scroll;
 }
 
 .AttendyBanner
@@ -62,33 +72,40 @@ canvas
     top: 0;
     z-index: 99;
     width: var(--maxWidth);
-    border-bottom: 1px solid var(--DarkGrey);
+    padding: 0.75em 0em;
 }
 
-.AttendyBanner > img, .AttendyBanner > button
+.AttendyBanner > img, .AttendyBanner > a > button
 {
-    margin: 0em 1em 0em 1em;
+    margin: 0em 2em 0em 2em;
     padding: 0.25em 0em;
 }
 
-.AttendyBanner > button
+.AttendyBanner > a > button
 {
     background-color: var(--DarkBlue);
-    border: 1px solid var(--DarkGrey);
-    border-radius: 3px;
+    border: 0px solid var(--DarkGrey);
+    border-radius: 5px;
     width: 7em;
-    height: 2em;
+    height: 2.25em;
     color: var(--White);
 }
 
-.AttendyBanner > button:focus-within, .AttendyBanner > button:hover
+.AttendyBanner > a > button:focus-within, .AttendyBanner > button:hover
 {
     background-color: var(--LightBlue);
 }
 
-.CheckInContainer_Header, .HomeContainer_Header
+.CheckInContainer_Header
 {
-    padding: 3em 0em;
+    padding: 8em 0em 1em 0em;
+    color: var(--White);
+    text-align: center;
+}
+
+.HomeContainer_Header
+{
+    padding: 4em 0em 1em 0em;
     color: var(--White);
     text-align: center;
 }
@@ -110,9 +127,9 @@ canvas
 {
     /* Select ONLY Input Field */
     height: 3em;
-    border: 1px solid var(--DarkGrey);
-    border-radius: 3px;
-    box-shadow: 3px 3px 10px;
+    border: 0px solid var(--DarkGrey);
+    border-radius: 5px;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.25);
     background-color: var(--White);
     color: var(--DarkGrey);
     text-align: center;
@@ -122,19 +139,23 @@ canvas
 {
     /* Colour Placeholder Text for Aesthetics */
     color: var(--DarkGrey);
-    text-align: center;
+    text-align: left;
+    padding: 0em 0em 0em 1em;
 }
 
 .CheckInContainer_InputFields > button
 {
     /* Select ONLY Button Field */
-    margin: 3em 0em;
-    height: 3em;
-    border: 1px solid var(--DarkGrey);
+    margin: 3em auto 0em auto;
+    padding: 0em;
+    height: 2.25em;
+    width: 60%;
+    border: 0px solid var(--DarkGrey);
     border-radius: 5px;
-    box-shadow: 3px 3px 10px;
-    background-color: var(--White);
-    color: var(--DarkGrey);
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.25);
+    background-color: var(--LightBlue);
+    color: var(--White);
+    font-size: 115%;
     text-align: center;
 }
 
@@ -153,6 +174,13 @@ canvas
     column-gap: 1em;
 }
 
+.AttendanceDonut_Text
+{
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+}
+
 .HomeContainer_Modules
 {
     display: flex;
@@ -161,8 +189,13 @@ canvas
     flex-direction: column;
     background-color: var(--White);
     width: 90%;
-    margin: 0em auto;
+    margin: 0em auto 3em auto;
     border: var(--LightGrey);
     border-radius: 10px;
     box-shadow: 3px 3px 10px;
+}
+
+.HomeContainer_ModuleOne_Content
+{
+    display: inline;
 }
