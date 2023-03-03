@@ -1,0 +1,168 @@
+:root
+{
+    /* Sizing */
+    --maxWidth: 414px;
+    --maxHeight: 896px;
+    /* Colours */
+    --DarkGrey: #1A1A1A;
+    --LightGrey: hsl(0, 0%, 35%);
+    --White: #FFFFFF;
+    --OffWhite: hsl(0, 0%, 75%);
+    --DarkBlue: hsl(212, 100%, 25%);
+    --LightBlue: hsl(212, 100%, 50%); 
+}
+
+*
+{
+    /* Font */
+    font-family: 'Lato', sans-serif;
+}
+
+a, a:visited, a:focus
+{
+    text-decoration: none;
+}
+
+html
+{
+    background-color: var(--DarkGrey);
+}
+
+body
+{
+    margin: 0em auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: var(--maxWidth);
+    height: var(--maxHeight);
+}
+
+canvas
+{
+    width: 100%;
+    max-width: var(--maxWidth);
+    background-color: white;
+}
+
+.CheckInContainer, .HomeContainer
+{
+    width: var(--maxWidth);
+    height: var(--maxHeight); 
+    background-image: url(/Images/Backgrounds/Darken/Background_01.png);
+}
+
+.AttendyBanner
+{
+    background-color: var(--White);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    width: var(--maxWidth);
+    border-bottom: 1px solid var(--DarkGrey);
+}
+
+.AttendyBanner > img, .AttendyBanner > button
+{
+    margin: 0em 1em 0em 1em;
+    padding: 0.25em 0em;
+}
+
+.AttendyBanner > button
+{
+    background-color: var(--DarkBlue);
+    border: 1px solid var(--DarkGrey);
+    border-radius: 3px;
+    width: 7em;
+    height: 2em;
+    color: var(--White);
+}
+
+.AttendyBanner > button:focus-within, .AttendyBanner > button:hover
+{
+    background-color: var(--LightBlue);
+}
+
+.CheckInContainer_Header, .HomeContainer_Header
+{
+    padding: 3em 0em;
+    color: var(--White);
+    text-align: center;
+}
+
+.CheckInContainer_InputFields
+{
+    /* Position The Input Fields & Buttons*/
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+    padding-top: 2em;
+    justify-content: center;
+    align-self: center;
+    margin: 2em auto;
+    width: 75%;
+}
+
+.CheckInContainer_InputFields > input
+{
+    /* Select ONLY Input Field */
+    height: 3em;
+    border: 1px solid var(--DarkGrey);
+    border-radius: 3px;
+    box-shadow: 3px 3px 10px;
+    background-color: var(--White);
+    color: var(--DarkGrey);
+    text-align: center;
+}
+
+.CheckInContainer_InputFields > input::placeholder
+{
+    /* Colour Placeholder Text for Aesthetics */
+    color: var(--DarkGrey);
+    text-align: center;
+}
+
+.CheckInContainer_InputFields > button
+{
+    /* Select ONLY Button Field */
+    margin: 3em 0em;
+    height: 3em;
+    border: 1px solid var(--DarkGrey);
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px;
+    background-color: var(--White);
+    color: var(--DarkGrey);
+    text-align: center;
+}
+
+.CheckInContainer_InputFields > button:focus, .CheckInContainer_InputFields > button:hover
+{
+    background-color: var(--OffWhite);
+}
+
+.AttendanceDonut
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    column-gap: 1em;
+}
+
+.HomeContainer_Modules
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--White);
+    width: 90%;
+    margin: 0em auto;
+    border: var(--LightGrey);
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px;
+}
