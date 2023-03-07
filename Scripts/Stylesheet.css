@@ -42,13 +42,6 @@ body
     height: 100%;
 }
 
-canvas
-{
-    width: 100%;
-    max-width: var(--maxWidth);
-    background-color: white;
-}
-
 .CheckInContainer, .HomeContainer
 {
     background-image: url(/Images/Backgrounds/Background_04.png);
@@ -195,7 +188,17 @@ canvas
     box-shadow: 3px 3px 10px;
 }
 
-.HomeContainer_ModuleOne_Content
+.HomeContainer_ModuleOne_Content, .HomeContainer_ModuleTwo_Content, .HomeContainer_ModuleThree_Content
 {
-    display: inline;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1em;
+    margin: 0em 1em;
+}
+
+.HomeContainer_ModuleOne > h2, .HomeContainer_ModuleTwo > h2, .HomeContainer_ModuleThree > h2
+{
+    text-align: center;
 }
