@@ -6,6 +6,7 @@
     /* Colours */
     --DarkGrey: #1A1A1A;
     --LightGrey: hsl(0, 0%, 35%);
+    --SelectedModule: #dadada;
     --White: #FFFFFF;
     --OffWhite: hsl(0, 0%, 75%);
     --DarkBlue: #4098FF;
@@ -188,17 +189,36 @@ body
     box-shadow: 3px 3px 10px;
 }
 
+.HomeContainer_ModuleOne, .HomeContainer_ModuleTwo, .HomeContainer_ModuleThree
+{
+    width: 100%;
+}
+
 .HomeContainer_ModuleOne_Content, .HomeContainer_ModuleTwo_Content, .HomeContainer_ModuleThree_Content
 {
     display: none;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    column-gap: 1em;
     margin: 0em 1em;
+    width: 90%;
 }
 
 .HomeContainer_ModuleOne > h2, .HomeContainer_ModuleTwo > h2, .HomeContainer_ModuleThree > h2
 {
     text-align: center;
+}
+
+.HomeContainer_ModuleOne:hover, .HomeContainer_ModuleTwo:hover
+{
+    width: 100%;
+    background-color: var(--SelectedModule);
+}
+
+.HomeContainer_ModuleThree:hover
+{
+    width: 100%;
+    background-color: var(--SelectedModule);
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
 }
