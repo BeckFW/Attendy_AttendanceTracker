@@ -7,28 +7,22 @@
 
 // TO DO - Check if localstorage item exists. If it does, use it, if not, fetch json
 
-// Get Data from URL parameters
-try 
-{
-    let urlParams = new URLSearchParams(window.location.search); 
-    let currentRoom = urlParams.get('room_number'); 
-}
-catch (err) 
-{
-    console.warn("No url parameters provided"); 
-}
-
 // TO DO check room and time against lut to get current module in setModule()
 
-// Global Variables
+// ---------------- // 
+// Global Variables // 
+// ---------------- // 
 let currentTime; 
-let formattedTime;
-let currentModule = "CI517";
+let timeDisplay = document.querySelector("#CheckInTime")
+let data; // JSON Data
+let currentModule;
 
-// HTML Elements
+// HTML Elements // 
 let submitButton = document.querySelector("#Submit");
 
+// --------- //
 // Functions // 
+// --------- // 
 
 // Async Fetch Json 
 async function fetchAttendanceJson() {
@@ -40,18 +34,15 @@ async function fetchAttendanceJson() {
 }
 
 // Update Time Field
-let getCurrentTime = () =>
+let getFormattedTime = () =>
 {
-    let timeDisplay = document.querySelector("#CheckInTime")
-    currentTime = new Date();
+    let currentTime = new Date();
     let hours = currentTime.getHours()
     let minutes = currentTime.getMinutes()
 
     if (minutes < 10) {minutes = "0" + minutes};
 
-    formattedTime = hours + ":" + minutes;
-
-    timeDisplay.value = formattedTime;
+    let formattedTime = hours + ":" + minutes;
 
     // New
     return formattedTime; 
@@ -64,13 +55,15 @@ let checkIn = () =>
     let roomNumber = document.querySelector("#RoomNumber").value;
     let checkInTime = document.querySelector("#CheckInTime").value;
 
+    setCurrentModule(); 
+
     // Create new attendance object
     let attendanceObj = {}; 
     
     attendanceObj.type = "lecture"; 
     attendanceObj.date = Date.now(); 
     attendanceObj.room = roomNumber;
-    attendanceObj.time = formattedTime; 
+    attendanceObj.time = getFormattedTime(); 
     
     data.data[studentID].attendance[currentModule].entries.push(attendanceObj);
     data.data[studentID].attendance[currentModule].entries_num++; 
@@ -80,19 +73,17 @@ let checkIn = () =>
 
     // Update Local Storage
     updateJsonContent(data, studentID); 
+    window.location.assign("./Home.html");
 }
 
 let setCurrentModule = () => 
 {
-    
+    currentModule = "CI517"; 
 }
 
 let updateJsonContent = (_newData, _studentID) => 
 // Prep for handover to attendance details page
-{
-    // Clear local storage from previous demos
-    localStorage.clear()
-
+{  
     // add logged in student to local storage (demo only)
     localStorage.setItem('studentID', _studentID); 
 
@@ -102,10 +93,38 @@ let updateJsonContent = (_newData, _studentID) =>
     console.log(localStorage.getItem('jsonData')); 
 }
 
-let data = fetchAttendanceJson(); 
+let resetDemo = () => 
+// Reset Demo
+{
+    localStorage.clear(); 
+    window.location.reload(); 
+}
+
+// Check if localstorage in use / demo in progress
+if (localStorage.getItem('jsonData') != null)
+{
+    data = JSON.parse(localStorage.getItem('jsonData')); 
+    console.log("Found local data"); 
+} 
+else 
+{
+    data = fetchAttendanceJson(); 
+    console.log("Retrieved JSON data"); 
+}
+
+// Get Data from URL parameters
+try 
+{
+    let urlParams = new URLSearchParams(window.location.search); 
+    let currentRoom = urlParams.get('room_number'); 
+}
+catch (err) 
+{
+    console.warn("No url parameters provided"); 
+}
 
 // Button Event Listener
 submitButton.addEventListener("click", checkIn); 
 
 // Update Time Field
-getCurrentTime(); 
+timeDisplay.value = getFormattedTime();
