@@ -7,7 +7,9 @@
     <title>Attendy: Home</title>
     <!-- Scripts -->
     <link rel="stylesheet" href="Scripts/Stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" defer></script>
     <script src="/Scripts/JavaScript.js" defer></script>
+    <script src="/Scripts/Details.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
@@ -22,7 +24,7 @@
             <h1>Overall Attendance</h1>
         </div>
         <div class="AttendanceDonut">
-            <canvas>
+            <canvas id="OverallAttendanceDonut" style="width:100%;max-width:600px">
                 
             </canvas>
             <div class="AttendanceDonut_Text">
