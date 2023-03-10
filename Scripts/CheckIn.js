@@ -5,8 +5,7 @@
 
 // Functionality
 
-// Import JSON file -- TODO change to fetch
-import data from './AttendanceData.json' assert { type: 'json' };
+// TO DO - Check if localstorage item exists. If it does, use it, if not, fetch json
 
 // Get Data from URL parameters
 try 
@@ -29,8 +28,18 @@ let currentModule = "CI517";
 // HTML Elements
 let submitButton = document.querySelector("#Submit");
 
+// Functions // 
 
-// Update time field
+// Async Fetch Json 
+async function fetchAttendanceJson() {
+    await fetch("/Scripts/AttendanceData.json")
+    .then(res => res.json())
+    .then(resJson => {
+        data = resJson; 
+    });
+}
+
+// Update Time Field
 let getCurrentTime = () =>
 {
     let timeDisplay = document.querySelector("#CheckInTime")
@@ -55,6 +64,7 @@ let checkIn = () =>
     let roomNumber = document.querySelector("#RoomNumber").value;
     let checkInTime = document.querySelector("#CheckInTime").value;
 
+    // Create new attendance object
     let attendanceObj = {}; 
     
     attendanceObj.type = "lecture"; 
@@ -91,6 +101,8 @@ let updateJsonContent = (_newData, _studentID) =>
     console.log("Local storage updated..."); 
     console.log(localStorage.getItem('jsonData')); 
 }
+
+let data = fetchAttendanceJson(); 
 
 // Button Event Listener
 submitButton.addEventListener("click", checkIn); 
