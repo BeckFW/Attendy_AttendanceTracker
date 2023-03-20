@@ -28,8 +28,10 @@ HomeContainer_ModuleThree_AttendanceDonut.style.display = "none";
 function ToggleModuleOneContent()
 {
     if (HomeContainer_ModuleOne_Content.style.display === "none")
-{    HomeContainer_ModuleOne_Content.style.display = "flex";
-    HomeContainer_ModuleOne_AttendanceDonut.style.display = "flex"}
+{ 
+    HomeContainer_ModuleOne_Content.style.display = "block";
+    HomeContainer_ModuleOne_AttendanceDonut.style.display = "block"
+}
     else
 {        HomeContainer_ModuleOne_Content.style.display = "none";
         HomeContainer_ModuleOne_AttendanceDonut.style.display = "none";}
@@ -38,8 +40,8 @@ function ToggleModuleOneContent()
 function ToggleModuleTwoContent()
 {
     if (HomeContainer_ModuleTwo_Content.style.display === "none")
-{    HomeContainer_ModuleTwo_Content.style.display = "flex";
-    HomeContainer_ModuleTwo_AttendanceDonut.style.display = "flex"}
+{    HomeContainer_ModuleTwo_Content.style.display = "block";
+    HomeContainer_ModuleTwo_AttendanceDonut.style.display = "block"}
     else
 {        HomeContainer_ModuleTwo_Content.style.display = "none";
         HomeContainer_ModuleTwo_AttendanceDonut.style.display = "none";}
@@ -48,8 +50,8 @@ function ToggleModuleTwoContent()
 function ToggleModuleThreeContent()
 {
     if (HomeContainer_ModuleThree_Content.style.display === "none")
-{    HomeContainer_ModuleThree_Content.style.display = "flex";
-    HomeContainer_ModuleThree_AttendanceDonut.style.display = "flex"}
+{    HomeContainer_ModuleThree_Content.style.display = "block";
+    HomeContainer_ModuleThree_AttendanceDonut.style.display = "block"}
     else
 {        HomeContainer_ModuleThree_Content.style.display = "none";
         HomeContainer_ModuleThree_AttendanceDonut.style.display = "none";}

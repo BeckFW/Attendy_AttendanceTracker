@@ -158,7 +158,7 @@ body
     background-color: var(--OffWhite);
 }
 
-.AttendanceDonut
+/* .AttendanceDonut
 {
     display: flex;
     justify-content: center;
@@ -166,12 +166,15 @@ body
     flex-direction: column;
     color: white;
     column-gap: 1em;
-}
+} */
 
 .AttendanceDonut_Text
 {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
+    color: white;
     column-gap: 1em;
 }
 
@@ -196,12 +199,16 @@ body
 
 .HomeContainer_ModuleOne_Content, .HomeContainer_ModuleTwo_Content, .HomeContainer_ModuleThree_Content
 {
-    display: none;
-    flex-direction: row;
-    justify-content: space-between;
+    margin: 0em auto;
+    width: 100%;
+}
+
+.HomeContainer_ModuleOne_SessionInformation, .HomeContainer_ModuleTwo_SessionInformation, .HomeContainer_ModuleThree_SessionInformation
+{
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 0em 1em;
-    width: 90%;
+    column-gap: 3em;
 }
 
 .HomeContainer_ModuleOne > h2, .HomeContainer_ModuleTwo > h2, .HomeContainer_ModuleThree > h2
