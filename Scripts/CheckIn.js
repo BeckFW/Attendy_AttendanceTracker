@@ -16,6 +16,7 @@ let currentTime;
 let timeDisplay = document.querySelector("#CheckInTime")
 let data; // JSON Data
 let currentModule;
+let roomNumber; 
 
 // HTML Elements // 
 let submitButton = document.querySelector("#Submit");
@@ -52,7 +53,7 @@ let checkIn = () =>
 {
 
     let studentID = document.querySelector("#StudentID").value;
-    let roomNumber = document.querySelector("#RoomNumber").value;
+    roomNumber = document.querySelector("#RoomNumber").value;
     let checkInTime = document.querySelector("#CheckInTime").value;
 
     setCurrentModule(); 
@@ -78,7 +79,24 @@ let checkIn = () =>
 
 let setCurrentModule = () => 
 {
-    currentModule = "CI517"; 
+    //urrentModule = "CI517"; 
+    console.log(roomNumber); 
+    switch (roomNumber) {
+        case "204":
+            currentModule = "CI517";
+            break;
+        case "205":
+            currentModule = "CI520"; 
+
+        break; 
+        case "206":
+            currentModule = "CI536"; 
+
+        break;
+        default:
+            window.alert("No modules found. Please enter a valid room number: 204, 205, 206"); 
+            break;
+    }
 }
 
 let updateJsonContent = (_newData, _studentID) => 
