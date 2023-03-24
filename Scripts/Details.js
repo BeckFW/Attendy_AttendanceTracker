@@ -28,8 +28,10 @@ function UpdateDetails()
     // Manage data for each module
     let textClassAttended = ".HomeContainer_ModuleSessionInformation_Attended_" + modules[i]; 
     let textClassAbsent = ".HomeContainer_ModuleSessionInformation_Absent_" + modules[i];
+    let headerClass = ".HomeContainer_Module_Header_" + modules[i];
     document.querySelector(textClassAttended).textContent = "Attended: " + currentAttended;
     document.querySelector(textClassAbsent).textContent = "Absent: " + missed;
+    document.querySelector(headerClass).textContent = modules[i];
 
     // Update overall attendance data
     allMeetings += currentAllMeetings;
