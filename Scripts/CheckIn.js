@@ -56,6 +56,7 @@ let checkIn = () =>
     roomNumber = document.querySelector("#RoomNumber").value;
     let checkInTime = document.querySelector("#CheckInTime").value;
 
+    // Set the module that the user is checking in to 
     setCurrentModule(); 
 
     // Create new attendance object
@@ -78,8 +79,8 @@ let checkIn = () =>
 }
 
 let setCurrentModule = () => 
+// Set module based on given room number
 {
-    //urrentModule = "CI517"; 
     console.log(roomNumber); 
     switch (roomNumber) {
         case "204":
@@ -112,7 +113,7 @@ let updateJsonContent = (_newData, _studentID) =>
 }
 
 let resetDemo = () => 
-// Reset Demo
+// Reset Demo - not used currently
 {
     localStorage.clear(); 
     window.location.reload(); 
