@@ -5,9 +5,8 @@
 
 // Functionality
 
-// TO DO - Check if localstorage item exists. If it does, use it, if not, fetch json
-
-// TO DO check room and time against lut to get current module in setModule()
+// Import class for adding new student records
+import StudentRecord from "./DataStorage.js";
 
 // ---------------- // 
 // Global Variables // 
@@ -42,6 +41,7 @@ let getFormattedTime = () =>
     let minutes = currentTime.getMinutes()
 
     if (hours < 10) {hours = "0" + hours};
+    if (minutes < 10) { minutes = "0" + minutes};
 
     let formattedTime = hours + ":" + minutes;
 
@@ -55,6 +55,11 @@ let checkIn = () =>
     let studentID = document.querySelector("#StudentID").value;
     roomNumber = document.querySelector("#RoomNumber").value;
     let checkInTime = document.querySelector("#CheckInTime").value;
+
+    if (!data.data[studentID]) {
+        console.log("ID not found"); 
+        data.data[studentID] = createNewStudentRecord(studentID); 
+    }
 
     // Set the module that the user is checking in to 
     setCurrentModule(); 
@@ -119,6 +124,14 @@ let resetDemo = () =>
     window.location.reload(); 
 }
 
+let createNewStudentRecord = (_studentID) =>
+// Create a new studentid entry in storage
+{
+    let newRecord = new StudentRecord(_studentID); 
+    console.log(newRecord); 
+    return newRecord; 
+}
+
 // Check if localstorage in use / demo in progress
 if (localStorage.getItem('jsonData') != null)
 {
@@ -129,7 +142,7 @@ else
 {
     data = fetchAttendanceJson(); 
     console.log("Retrieved JSON data"); 
-}
+} 
 
 // Get Data from URL parameters
 try 
