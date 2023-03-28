@@ -150,7 +150,17 @@ body::-webkit-scrollbar
 
 #CheckInTime
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    color: var(--DarkGrey);
+    background-color: var(--White);
+    height: 3em;
+    border: 0px solid var(--DarkGrey);
+    border-radius: 5px;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.25);
+    font-weight: 600;
 }
 
 .CheckInContainer_InputFields > button

@@ -161,4 +161,4 @@ catch (err)
 submitButton.addEventListener("click", checkIn); 
 
 // Update Time Field
-timeDisplay.value = getFormattedTime();
+timeDisplay.textContent = getFormattedTime();
