@@ -100,7 +100,9 @@ let setCurrentModule = () =>
 
         break;
         default:
-            window.alert("No modules found. Please enter a valid room number: 204, 205, 206"); 
+            document.querySelector(".ErrorMessageBanner").style.display = "flex";
+            document.querySelector("#StudentID").value = "";
+            document.querySelector("#RoomNumber").value = "";
             break;
     }
 }
@@ -148,7 +150,7 @@ else
 try 
 {
     let urlParams = new URLSearchParams(window.location.search); 
-    let currentRoom = urlParams.get('room_number'); 
+    let currentRoom = urlParams.get('room_number');
 }
 catch (err) 
 {

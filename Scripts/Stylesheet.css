@@ -1,8 +1,8 @@
 :root
 {
     /* Sizing - Prototype Only */
-    --maxWidth: 414px;
-    --maxHeight: 896px;
+    --maxWidth: 100vw;
+    --maxHeight: 100vh;
     /* Colours */
     --DarkGrey: #1A1A1A;
     --LightGrey: hsl(0, 0%, 35%);
@@ -32,25 +32,37 @@ h2
 html
 {
     background-color: var(--DarkGrey);
-    height: 100%;
+    width: var(--maxWidth);
+    height: var(--maxHeight);
     overflow-x: hidden;
 }
 
+html::-webkit-scrollbar
+{
+    display: none;
+}
 body
 {
     margin: 0em auto;
     width: var(--maxWidth);
-    height: 100%;
+    height: var(--maxHeight);
+    min-width: 400px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar
+{
+    display: none;
 }
 
 .CheckInContainer, .HomeContainer
 {
-    background-image: url(/Images/Backgrounds/Background_04.png);
+    background-image: url(/Images/Backgrounds/Darken/Background_04.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    box-shadow: inset 30em 30em rgba(0,0,0,0.5);
     height: 100%;
     overflow: scroll;
 }
@@ -114,7 +126,7 @@ body
     justify-content: center;
     align-self: center;
     margin: 2em auto;
-    width: 75%;
+    width: 50vw;
 }
 
 .CheckInContainer_InputFields > input
@@ -133,8 +145,12 @@ body
 {
     /* Colour Placeholder Text for Aesthetics */
     color: var(--DarkGrey);
-    text-align: left;
-    padding: 0em 0em 0em 1em;
+    text-align: center;
+}
+
+#CheckInTime
+{
+    text-align: center;
 }
 
 .CheckInContainer_InputFields > button
@@ -143,7 +159,7 @@ body
     margin: 3em auto 0em auto;
     padding: 0em;
     height: 2.25em;
-    width: 60%;
+    width: 25vw;
     border: 0px solid var(--DarkGrey);
     border-radius: 5px;
     box-shadow: 2px 3px 10px rgba(0,0,0,0.25);
@@ -158,7 +174,7 @@ body
     background-color: var(--OffWhite);
 }
 
-/* .AttendanceDonut
+.AttendanceDonut
 {
     display: flex;
     justify-content: center;
@@ -166,7 +182,7 @@ body
     flex-direction: column;
     color: white;
     column-gap: 1em;
-} */
+}
 
 .AttendanceDonut_Text
 {
@@ -228,4 +244,28 @@ body
     background-color: var(--SelectedModule);
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
+}
+
+.ErrorMessageBanner
+{
+    position: fixed;
+    bottom: 0em;
+    z-index: 99;
+    height: 5vh;
+    width: 100vw;
+    background-color: #ff4040;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.ErrorMessageBanner_CloseButton
+{
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 0.3em;
+    top: -0.2em;
 }

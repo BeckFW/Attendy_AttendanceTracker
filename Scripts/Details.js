@@ -62,16 +62,30 @@ function createChart(chartName, pData)
       labels: ["Attended", "Missed"],
       datasets: [{
         backgroundColor: [
-          "#1e7145",
-          "#b91d47"
+          "#6EECA8",
+          "#FB6565"
           ],
-        data: pData
+          borderAlign: [
+            "outer",
+            "outer"
+          ],
+          borderColor: [
+            "#000000",
+            "#000000"
+          ],
+          borderWidth: [
+            0,
+            0
+          ],
+        data: pData,
+
       }]
     },
     options: {
         legend: {
             display: false
-        }
+        },
+        cutoutPercentage: 85,
     }
   });
 }

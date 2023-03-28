@@ -19,13 +19,17 @@
                 <img src="/Images/AttendyLogo.png">
                 <a href="Home.html"><button>Attendance</button></a>
         </div>
+        <div class="ErrorMessageBanner">
+            <span class="ErrorMessageBanner_CloseButton" onclick="this.parentElement.style.display = 'none'">&times;</span>
+            <p><strong>Attendy</strong> - Incorrect Room Number! Please try again.</p>
+        </div>
         <div class="CheckInContainer_Header">
             <h1 class="CheckInContainer_HeaderText">Welcome</h1>
             <h2 class="RoomNumber">Cockcroft: Room 400</h2>
         </div>
         <div class="CheckInContainer_InputFields">
-            <input type="text" name="StudentID" id="StudentID" placeholder="Your StudentID">
-            <input type="text" name="RoomNumber" id="RoomNumber" placeholder="Room Number">
+            <input type="text" name="StudentID" id="StudentID" placeholder="StudentID">
+            <input type="text" name="RoomNumber" id="RoomNumber" placeholder="Room">
             <input type="time" name="CheckInTime" id="CheckInTime">
             <button type="submit" id="Submit">Submit</button>
         </div>
