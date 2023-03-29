@@ -6,19 +6,23 @@
 // Functionality
 
 // Import class for adding new student records
-import StudentRecord from "./DataStorage.js";
+import { StudentRecord, AttendanceRecord } from "./DataStorage.js";
 
 // ---------------- // 
 // Global Variables // 
 // ---------------- // 
 let currentTime; 
-let timeDisplay = document.querySelector("#CheckInTime")
 let data; // JSON Data
 let currentModule;
 let roomNumber; 
 
+
 // HTML Elements // 
 let submitButton = document.querySelector("#Submit");
+let timeDisplay = document.querySelector("#CheckInTime")
+let roomDisplay = document.querySelector("#RoomNumber");
+
+let urlParams = new URLSearchParams(window.location.search); 
 
 // --------- //
 // Functions // 
@@ -51,27 +55,23 @@ let getFormattedTime = () =>
 
 let checkIn = () => 
 {
-
     let studentID = document.querySelector("#StudentID").value;
-    roomNumber = document.querySelector("#RoomNumber").value;
-    let checkInTime = document.querySelector("#CheckInTime").value;
+    let checkInTime = document.querySelector("#CheckInTime").textContent;
 
     if (!data.data[studentID]) {
         console.log("ID not found"); 
         data.data[studentID] = createNewStudentRecord(studentID); 
     }
 
+    roomNumber = roomDisplay.value;
+
     // Set the module that the user is checking in to 
     setCurrentModule(); 
 
     // Create new attendance object
-    let attendanceObj = {}; 
+    let attendanceObj = new AttendanceRecord("lecture", Date.now(), roomNumber, checkInTime); 
     
-    attendanceObj.type = "lecture"; 
-    attendanceObj.date = Date.now(); 
-    attendanceObj.room = roomNumber;
-    attendanceObj.time = getFormattedTime(); 
-    
+    // Update storage
     data.data[studentID].attendance[currentModule].entries.push(attendanceObj);
     data.data[studentID].attendance[currentModule].entries_num++; 
     data.data[studentID].attendance[currentModule].meetings++;  
@@ -134,6 +134,10 @@ let createNewStudentRecord = (_studentID) =>
     return newRecord; 
 }
 
+// ---------------- //
+// Run on page load // 
+// ---------------- // 
+
 // Check if localstorage in use / demo in progress
 if (localStorage.getItem('jsonData') != null)
 {
@@ -147,14 +151,13 @@ else
 } 
 
 // Get Data from URL parameters
-try 
+if (urlParams.get('room_number') != null)
 {
-    let urlParams = new URLSearchParams(window.location.search); 
-    let currentRoom = urlParams.get('room_number');
-}
-catch (err) 
-{
-    console.warn("No url parameters provided"); 
+    let roomNumber = urlParams.get('room_number'); 
+    roomDisplay.value = roomNumber;
+    console.log("Room number: " + roomNumber); 
+} else {
+    console.log("No url params provided");
 }
 
 // Button Event Listener
