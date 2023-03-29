@@ -9,7 +9,7 @@ class AttendanceRecord {
 }
 
 // Overall object that holds a student's information
-export default class StudentRecord {
+class StudentRecord {
     constructor(studentid) {
         this.studentid = studentid;  
         this.attendance = new AttendanceStorageObj; 
@@ -36,6 +36,4 @@ class ModuleObj {
     }
 }
 
-
-
-
+export { StudentRecord, AttendanceRecord }; 
