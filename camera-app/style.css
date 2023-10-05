@@ -38,3 +38,8 @@ html, body{
       right: 20px;
       z-index: 2;
   }
+
+  video {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+  }
