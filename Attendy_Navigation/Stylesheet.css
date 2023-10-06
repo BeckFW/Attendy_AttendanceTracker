@@ -17,12 +17,14 @@ body {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius: 20px;
 }
 #camera--view,
 #camera--sensor,
 #camera--output {
   transform: scaleX(1);
   filter: FlipH;
+  border-radius: 20px;
 }
 
 .CameraOverlay {
@@ -31,7 +33,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  border: 3px solid black;
+  border: 5px solid white;
   box-sizing: border-box;
 }
 
