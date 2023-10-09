@@ -75,6 +75,9 @@ body {
   user-select: none;
 }
 
+button {
+  z-index: 99;
+}
 .CameraOverlay > .AttendyLogoBackground > img {
   position: relative;
 }

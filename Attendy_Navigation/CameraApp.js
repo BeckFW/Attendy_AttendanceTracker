@@ -27,7 +27,6 @@ function cameraStart() {
 }; */
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
-window.addEventListener("laod", startXR, false);
 
 async function startXR()
 {
