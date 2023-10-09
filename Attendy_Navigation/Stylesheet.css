@@ -78,6 +78,12 @@ body {
 button {
   z-index: 99;
 }
+
+canvas {
+  height: 100wh;
+  width: 100vw;
+  margin: 0 auto;
+}
 .CameraOverlay > .AttendyLogoBackground > img {
   position: relative;
 }
