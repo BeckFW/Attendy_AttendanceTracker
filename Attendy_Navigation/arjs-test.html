@@ -1,5 +1,6 @@
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+<script src="https://supereggbert.github.io/aframe-htmlembed-component/dist/build.js"></script>
 
 
 <style>
@@ -21,6 +22,15 @@
     font-size: 1.25em;
     color: white;
   }
+  .ar-wrapper {
+    background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    padding: 10% 15% 20% 15%;
+  }
+  .ar-text {
+    color: white;
+    font-size: 1rem;
+  }
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
@@ -33,22 +43,59 @@
     <h1 id="test" style="z-index: 9999999; position: fixed; left: 0; color: white; font-size: x-large;"></h1>
   </div>
 
-  <a-scene embedded arjs="sourceType: webcam; detectionMode: mono;">
+  <a-scene embedded arjs="sourceType: webcam;">
     <!-- Define your image marker -->
     <a-marker preset="custom" type="pattern" url="image_descriptors/pattern-C1-Logo.patt" name="C1">
         <!-- Add your 3D content here -->
+        <a-entity position="0 0 -1" rotation="-90 0 0" width="5" height="5" htmlembed>
+          <div class="ar-wrapper">
+          <h1 class="ar-text">Hello World!</h1>
+          <p class="ar-text">This is a demo of Attendy's augmented reality signage.</p>
+          <p class="ar-text">Using an anchor point on the scren, this box of text is placed above the camera view and secured in place. We're planning to use these boxes to hold importnant information about the campus, and display personalised details regarding upcoming lectures and naviagation help.</p>
+          <p class="ar-text" style="padding-bottom: 25px;"><span style="font-weight: bold;">Super</span> important information!</p>
+          <img src="/Attendy_Navigation/image_descriptors/brighton-uni-logo.jpg" style="width: 200px;"/>
+          <img src="/Attendy_Navigation/image_descriptors/Attendy_Logo.png" style="width: 200px;"/>
+          </div>
+          <!--<a-image src="/Attendy_Navigation/image_descriptors/Example Sign.png"  width="2" height="2" position="0 -1 0" rotation="-90 0 0" shadow event-set__enter="_event: mouseenter; color: #76D7C4" event-set__leave="_event: mouseleave; color: #FFD700">
+          </a-image>-->
+        
+        </a-entity>
+
+        <!--<a-text value="C1 Marker" position="0 0.5 0"></a-text>-->
         <!--<a-box position="0 0.5 0" material="color: red;"></a-box>-->
     </a-marker>
+
     <a-marker preset="custom" type="pattern" url="image_descriptors/pattern-C2-Logo.patt" name="C2">
-        <!-- Add your 3D content here -->
-        <!--<a-box position="0 0.5 0" material="color: red;"></a-box>-->
-    </a-marker>
+      <!-- Add your 3D content here -->
+      <a-entity position="0 0 -1" rotation="-90 0 0" width="5" height="5" htmlembed>
+        <div class="ar-wrapper">
+        <h1 class="ar-text">Hello Second Marker</h1>
+        <p class="ar-text">Here is different important information...</p>
+        <p class="ar-text" style="padding-bottom: 25px;"><span style="font-weight: bold;">MAD</span> important information!</p>
+        <img src="/Attendy_Navigation/image_descriptors/IMG_2003.jpeg" width="200px"/>
+        <br/>
+        <br/>
+        <div>
+          Also, I'm interactive!
+        </div>
+        </div>
+        
+        <!--<a-image src="/Attendy_Navigation/image_descriptors/Example Sign.png"  width="2" height="2" position="0 -1 0" rotation="-90 0 0" shadow event-set__enter="_event: mouseenter; color: #76D7C4" event-set__leave="_event: mouseleave; color: #FFD700">
+        </a-image>-->
+      
+      </a-entity>
+
+      <!--<a-text value="C1 Marker" position="0 0.5 0"></a-text>-->
+      <!--<a-box position="0 0.5 0" material="color: red;"></a-box>-->
+  </a-marker>    
+
+    <a-entity camera></a-entity>
 </a-scene>
 
 <script>
 
     document.querySelector('#test').innerHTML = "No markers visible";
-
+ 
     // Get a reference to the AR.js scene
     const scene = document.querySelector('a-scene');
 
@@ -61,7 +108,7 @@
 
     scene.addEventListener('markerLost', (event) => {
         document.querySelector('#test').innerHTML = "No markers visible";
-    })
+    });
     
 </script>
 
