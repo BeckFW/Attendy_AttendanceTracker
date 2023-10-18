@@ -72,7 +72,7 @@ async function startXR()
     session.updateRenderState({
       baseLayer: new XRWebGLLayer(session, gl)
     });
-
+    console.log("Session requested");
     // A 'local' reference space has a native origin that is located
     // near the viewer's position at the time the session was created.
     const referenceSpace = await session.requestReferenceSpace('local');
@@ -104,5 +104,6 @@ async function startXR()
       renderer.render(scene, camera)
     }
   }
+  console.log("Rendered succesfully");
   session.requestAnimationFrame(onXRFrame);
 };
